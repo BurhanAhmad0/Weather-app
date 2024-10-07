@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-bullet-red::marker {
+    color: rgb(144, 61, 144);
+    /* Tailwind's red-500 */
+}
+
+.custom-bullet-blue::marker {
+    color: #3b82f6;
+    /* Tailwind's blue-500 */
+}
+
+.custom-bullet-green::marker {
+    color: #10a2b9;
+    /* Tailwind's green-500 */
+}
+
+.custom-bullet-lightdarkblue::marker {
+    color: rgb(22, 130, 253);
+    /* Tailwind's green-500 */
+}
+
+.custom-bullet-brightcyan::marker {
+    color: #04c0e1;
+    /* Tailwind's green-500 */
+}
+
+/* Side Bar Appear/Hide Functionality */
+.appear{
+    transform: translateX(0%);
+}

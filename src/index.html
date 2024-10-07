@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./styles/output.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./favicon/favicon.png" type="image/x-icon">
+
+    <!-- FontAwesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Chart Js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+<body>
+
+    <div class="w-full relative bg-[url('../assets/bg.jpg')] bg-[-400px] mlg:bg-[-125px] bg-cover bg-no-repeat">
+
+        <nav id="navbar" class="nav-bar sticky top-0 transition-all duration-[1s] z-10 text-white flex items-end justify-around py-4">
+
+            <div class="nav-left flex items-center gap-6">
+
+                <div class="logo font-bold flex items-center gap-3">
+                    <a href="#"><img class="w-[40px]" src="./assets/logo.png" alt="Logo"></a>
+                    <h2 class="text-black hidden xsm:block"><a href="#">Weather Forecast</a></h2>
+                </div>
+
+                <ul class="nav-links hidden md:flex items-center gap-5 text-black">
+                    <li class="hover:underline"><a href="#">Home</a></li>
+                    <li class="hover:underline"><a href="#">Application</a></li>
+                </ul>
+
+            </div>
+
+            <div class="currentTime text-[#3c4b6f] hidden slg:flex items-end gap-2">
+                <span id="currTime">00:00</span>
+                <div class="time text-[10px] flex flex-col">
+                    <span id="meridian">A.M</span>
+                    <span class="font-bold">Time</span>
+                </div>
+            </div>
+
+            <div
+                class="toggleDark-mode hidden slg:block w-[6%] bg-white bg-opacity-[0.2] backdrop-blur-[25px] rounded-full p-1">
+                <div
+                    class="circle bg-white bg-opacity-[0.4] backdrop-blur-[25px] w-[27px] h-[27px] rounded-full flex items-center justify-center text-[#637aaf]">
+                    <i class="font-thin fas fa-sun"></i>
+                </div>
+            </div>
+
+            <div class="currentDate text-[#3c4b6f] hidden slg:flex items-end gap-2">
+                <span id="currDate">06 April</span>
+                <div class="time text-[10px] flex flex-col">
+                    <span id="year">Year</span>
+                    <span class="font-bold">Date</span>
+                </div>
+            </div>
+
+            <div class="nav-right flex items-center gap-5">
+
+                <div class="user-welcm text-sm text-[#3c4b6f] ssm:text-white flex flex-col justify-center">
+                    <span>Hey! 👋</span>
+                    <span class="text-[25px]">User</span>
+                </div>
+
+                <div
+                    class="nav-btns bg-white bg-opacity-[0.2] backdrop-blur-[25px] rounded-full p-1 hidden ssm:flex gap-1">
+                    <div
+                        class="circle w-[30px] h-[30px] rounded-full flex justify-center items-center bg-white bg-opacity-[0.4] backdrop-blur-[25px] text-[#637aaf]">
+                        <i class="text-2xl far fa-plus"></i>
+                    </div>
+                    <div
+                        class="circle w-[30px] h-[30px] rounded-full flex justify-center items-center bg-white bg-opacity-[0.4] backdrop-blur-[25px] text-[#637aaf]">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div
+                        class="circle w-[30px] h-[30px] rounded-full flex items-center justify-center bg-white bg-opacity-[0.4] backdrop-blur-[25px] text-[#637aaf]">
+                        <i class="font-thin fas fa-user"></i>
+                    </div>
+                </div>
+
+                <div
+                    class="circle bg-white bg-opacity-[0.2] backdrop-blur-[23px] h-[36px] w-[36px] rounded-full text-white hidden xsm:flex items-center justify-center">
+                    <i class="fas fa-globe"></i>
+                </div>
+
+                <div id="hamburger-icon" class="circle cursor-pointer h-[30px] w-[30px] bg-black bg-opacity-[0.4] backdrop-blur-[25px] rounded-full text-white flex items-center justify-center">
+                    <i class="font-thin fas fa-bars opacity-[0.9]"></i>
+                </div>
+
+            </div>
+
+        </nav>
+
+        <article class="side-bar translate-x-[100%] transition-all duration-[1s] bg-[#3c4b6f] bg-opacity-[0.95] fixed h-[88vh] right-0 z-10 w-[100%] md:w-[50%] slg:w-[26%]">
+
+            Side Bar
+
+        </article>
+
+        <section class="main flex flex-col smd:flex-row justify-around w-full">
+
+            <div class="left w-[43%]">
+                <div class="hero-section mx-[50px] mt-[25px] smd:mt-[50px]">
+                    <span
+                        class="text-6xl my-4 bg-gradient-to-r from-[#475d90] to-[#9daccf] bg-clip-text text-transparent"
+                        style="background-size: 150%; background-position: left 25%;">Stormy</span>
+                    <br>
+                    <span class="text-4xl my-4 bg-gradient-to-r from-[#475d90] to-[#9daccf] bg-clip-text text-transparent"
+                        style="background-size: 150%; background-position: left 25%;">with Heavy Rain</span>
+
+                    <p class="text-[#3c4b6f] hidden smd:block w-[225px] smd:w-[300px] h-[225px] overflow-hidden my-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, debitis. Beatae, aspernatur excepturi. Architecto dolorem pariatur animi odio sit. Incidunt asperiores dignissimos consequuntur distinctio voluptatem.</p>
+
+                </div>
+
+                <div class="city-temp-boxes mx-[50px] hidden smd:flex flex-col mlg:flex-row justify-around items-center gap-1">
+                    <!-- <div class="box h-fit w-[152px] mlg:w-[37%]">
+                        <div class="temp m-5 text-5xl text-[#3c4b6f]">
+                            <span>0&deg;</span>
+                        </div>
+                        <span class="latitude text-[#3c4b6f] mx-2 text-sm">38.90&deg;N</span><br>
+                        <span class="city text-[#3c4b6f] mx-2 text-sm">Sheikhupura</span>
+
+                        <div class="bars my-5 w-[90%] mx-auto">
+                            <div class="bg-cyan-400 rounded-full h-1 w-[95%] my-2"></div>
+                            <div class="bg-cyan-400 bg-opacity-[.5] rounded-full h-1 w-[85%] my-2"></div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="box h-fit w-[152px] mlg:w-[37%]">
+                        <div class="temp m-5 text-5xl text-[#3c4b6f]">
+                            <span>0&deg;</span>
+                        </div>
+                        <span class="latitude text-[#3c4b6f] mx-2 text-sm">38.90&deg;N</span><br>
+                        <span class="city text-[#3c4b6f] mx-2 text-sm">Sheikhupura</span>
+
+                        <div class="bars my-5 w-[90%] mx-auto">
+                            <div class="bg-orange-400 rounded-full h-1 w-[95%] my-2"></div>
+                            <div class="bg-orange-400 bg-opacity-[.5] rounded-full h-1 w-[85%] my-2"></div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="box h-fit w-[152px] mlg:w-[37%]">
+                        <div class="temp m-5 text-5xl text-[#3c4b6f]">
+                            <span>0&deg;</span>
+                        </div>
+                        <span class="latitude text-[#3c4b6f] mx-2 text-sm">38.90&deg;N</span><br>
+                        <span class="city text-[#3c4b6f] mx-2 text-sm">Sheikhupura</span>
+
+                        <div class="bars my-5 w-[90%] mx-auto">
+                            <div class="bg-blue-700 rounded-full h-1 w-[95%] my-2"></div>
+                            <div class="bg-blue-700 bg-opacity-[.5] rounded-full h-1 w-[85%] my-2"></div>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div class="temp-scale hidden smd:flex items-center gap-8 m-10 mx-[50px] mt-[50px]">
+
+                    <div class="graph relative w-fit">
+                        <div
+                            class="circle bg-white bg-opacity-[0.2] backdrop-blur-[23px] h-[150px] w-[150px] text-white rounded-full overflow-hidden flex items-center justify-center">
+                            <canvas id="myChart" class="relative bottom-[-12px] left-[-10px]" style="width:100%;height:100%;"></canvas>
+                        </div>
+
+                        <div
+                            class="circle bg-white bg-opacity-[0.35] backdrop-blur-[23px] h-[28px] w-[28px] text-white text-2xl rounded-full overflow-hidden flex items-center justify-center absolute bottom-0 left-3">
+                            <i class="far fa-plus"></i>
+                        </div>
+                    </div>
+
+                    <div class="scale text-[#3c4b6f] w-full">
+                        <span id="avgTemp" class="text-2xl mx-5">0</span><br>
+                        <span id="weather-stat" class="font-medium ml-5">Normal</span>
+                        <span id="wind-dir" class="text-[10px]">38.90&deg;N</span>
+
+                        <div
+                            class="temp-bar relative my-3 rounded-full h-[15px] w-[93%] bg-gradient-to-r from-blue-400 to-red-400">
+                            <div id="temp-bar-circle" class="circle w-[20px] h-[20px] rounded-full bg-white absolute top-[-3px] left-[0%]">
+                            </div>
+                        </div>
+
+                        <div class="friend-profiles flex items-center">
+                            <div
+                                class="circle bg-white bg-opacity-[0.35] backdrop-blur-[23px] h-[30px] w-[30px] text-[#3c4b6f] rounded-full flex items-center text-sm justify-center mx-[-2px]">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div
+                                class="circle bg-white bg-opacity-[0.35] backdrop-blur-[23px] h-[30px] w-[30px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-2px]">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div
+                                class="circle bg-white bg-opacity-[0.35] backdrop-blur-[23px] h-[30px] w-[30px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-2px]">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div
+                                class="circle bg-white bg-opacity-[0.35] backdrop-blur-[23px] h-[30px] w-[30px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-2px]">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div
+                                class="circle bg-white bg-opacity-[0.35] backdrop-blur-[23px] h-[30px] w-[30px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-2px]">
+                                <i class="fas fa-user"></i>
+                            </div>
+
+                            <span class="text-[10px] mx-4 font-normal">+ Friends in SKP</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="right w-[100%] smd:w-[33%] h-fit">
+                
+                <div class="hero-temp-box flex items-center mt-[25px] smd:mt-[50px]">
+                    <div class="left h-[215px] mx-auto w-[23%] hidden md:flex flex-col justify-between">
+                        <div class="more-info bg-white flex items-center justify-center h-[20px] rounded-full w-[27px] gap-1">
+                            <div class="dot w-[3.5px] h-[3.5px] bg-[#3c4b6f] rounded-[100%]"></div>
+                            <div class="dot w-[3.5px] h-[3.5px] bg-[#3c4b6f] rounded-[100%]"></div>
+                            <div class="dot w-[3.5px] h-[3.5px] bg-[#3c4b6f] rounded-[100%]"></div>
+                        </div>
+
+                        <div class="review w-[80%] mx-auto text-white text-[10px] font-medium">
+                            <div class="stat-info bg-white bg-opacity-[0.35] flex items-center justify-center h-[20px] rounded-full w-[90%] gap-1 my-1">
+                                <span id="wind-dir">38.90&deg;N</span>
+                            </div>
+            
+                            <div class="more-info bg-[#3c4b6f] flex items-center justify-center h-[20px] rounded-full w-[100%] gap-1 my-1">
+                                <span>Celsius</span>
+                            </div>
+                        </div>
+
+                        <div class="zone w-[80%] mx-auto text-[10px] font-medium text-[#3c4b6f] my-1">
+                            <span>Intensity</span><br>
+                            <span>zone</span>
+                        </div>
+                    </div>
+
+                    <div class="right mx-auto w-[170px]">
+                        <div class="temp text-9xl relative px-3 text-[#3c4b6f] smd:text-white mx-auto">
+                            <span id="hero-temp">0&deg;</span>
+                            <span class="text-[15px] absolute right-[-15px] bottom-[12px]">+/-</span>
+                        </div>
+                        <div class="weather-info text-center smd:text-end text-[#3c4b6f] smd:text-white mt-3">
+                            <span id="wind-speed" class="text-[10px] font-bold">WIND: WSW 6 MPH</span><br>
+                            <span class="text-[10px] font-bold">UV INDEX: N/A OF 10</span><br>
+                            <span id="city" class="text-[10px]">- SHEIKHUPURA CITY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="selected-cities flex flex-col justify-center">
+                    <div class="thermo-meter flex items-center justify-around mt-8">
+                        <div class="thermometer text-3xl text-[#3c4b6f]">
+                            <i class="fas fa-thermometer-three-quarters"></i>
+                            <span>N/A</span>
+                            <span class="text-[10px]">+</span>
+                        </div>
+
+                        <div class="friend-profiles flex items-center opacity-[0.85]">
+                            <div class="circle bg-purple-700 h-[20px] w-[20px] text-[#3c4b6f] rounded-full flex items-center text-sm justify-center mx-[-4px]">
+                            </div>
+                            <div class="circle bg-purple-500 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
+                            </div>
+                            <div class="circle bg-green-400 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
+                            </div>
+                            <div class="circle bg-cyan-300 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
+                            </div>
+                            <div class="circle bg-yellow-200 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- <div class="cities w-[100%] flex items-center justify-evenly">
+                        <ul class="list-disc list-inside text-white font-medium">
+                            <li class="my-5 custom-bullet-red text-nowrap">Sheikhupura</li>
+                            <li class="my-5 custom-bullet-green text-nowrap">Sheikhupura</li>
+                            <li class="my-5 custom-bullet-blue text-nowrap">Sheikhupura</li>
+                            <li class="my-5 custom-bullet-brightcyan text-nowrap">Sheikhupura</li>
+                            <li class="my-5 custom-bullet-lightdarkblue text-nowrap">Sheikhupura</li>
+                        </ul>
+
+                        <div class="temp flex flex-col justify-center font-medium text-[#3c4b6f]">
+                            <span class="my-[10px]">0&deg;</span>
+                            <span class="my-[10px]">0&deg;</span>
+                            <span class="my-[10px]">0&deg;</span>
+                            <span class="my-[10px]">0&deg;</span>
+                            <span class="my-[10px]">0&deg;</span>
+                        </div>
+                        <div class="icon bg-white bg-opacity-[0.3] flex flex-col items-center justify-center rounded-full">
+                            <div class="circle w-[25px] h-[25px] flex items-center justify-center p-4 rounded-[100%] bg-white bg-opacity-[0.5] text-[#3c4b6f] my-[6px]">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <div class="circle w-[25px] h-[25px] flex items-center justify-center p-4 rounded-[100%] bg-white bg-opacity-[0.5] text-[#3c4b6f] my-[6px]">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
+                            <div class="circle w-[25px] h-[25px] flex items-center justify-center p-4 rounded-[100%] bg-white bg-opacity-[0.5] text-[#3c4b6f] my-[6px]">
+                                <i class="fas fa-cloud-meatball"></i>
+                            </div>
+                            <div class="circle w-[25px] h-[25px] flex items-center justify-center p-4 rounded-[100%] bg-white bg-opacity-[0.5] text-[#3c4b6f] my-[6px]">
+                                <i class="fas fa-cloud-rain"></i>
+                            </div>
+                            <div class="circle w-[25px] h-[25px] flex items-center justify-center p-4 rounded-[100%] bg-white bg-opacity-[0.5] text-[#3c4b6f] my-[6px]">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                        </div>
+                    </div> -->
+                
+                    <div class="cities font-bold text-[#3c4b6f]">
+                        <!-- <div class="card border-2 flex justify-around items-center my-[35px] py-3">
+                            <span class="city-name border-2">
+                                Sheikhupura
+                            </span>
+                            <span class="city-temp border-2">
+                                0&deg;
+                            </span>
+                            <span class="icon border-2">
+                                <img width="35px" src="http://openweathermap.org/img/wn/01d@2x.png" alt="">
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+        <footer class="footer-section">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <!-- Gradient for stroke -->
+                <defs>
+                    <linearGradient id="gradientStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="25%" style="stop-color:rgb(73, 123, 248);stop-opacity:1" />
+                        <stop offset="35%" style="stop-color:rgb(85, 145, 242);stop-opacity:1" />
+                        <stop offset="45%" style="stop-color:rgb(157, 172, 207) ;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Wave path with gradient stroke -->
+                <path fill="transparent" stroke="url(#gradientStroke)" stroke-width="3px" d="M0,128L21.8,144C43.6,160,87,192,131,181.3C174.5,171,218,117,262,112C305.5,107,349,149,393,154.7C436.4,160,480,128,524,149.3C567.3,171,611,245,655,245.3C698.2,245,742,171,785,154.7C829.1,139,873,181,916,176C960,171,1004,117,1047,122.7C1090.9,128,1135,192,1178,229.3C1221.8,267,1265,277,1309,261.3C1352.7,245,1396,203,1418,181.3L1440,160L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path>
+
+                <!-- Timestamps along the path -->
+                <text x="115" y="210" fill="#3c4b6f" font-weight="500" font-size="20px">0&deg;</text>
+                <text x="250" y="100" fill="#3c4b6f" font-weight="500" font-size="20px">15&deg;</text>
+                <text x="500" y="130" fill="#3c4b6f" font-weight="500" font-size="20px">30&deg;</text>
+                <text x="650" y="270" fill="#3c4b6f" font-weight="500" font-size="20px">45&deg;</text>
+                <text x="1040" y="110" fill="#3c4b6f" font-weight="500" font-size="20px">60&deg;</text>
+                <text x="1270" y="290" fill="#3c4b6f" font-weight="500" font-size="20px">75&deg;</text>
+            </svg>
+
+        </footer>
+
+    </div>
+
+    <script type="module" src="./js/script.js"></script>
+</body>
+
+</html>
