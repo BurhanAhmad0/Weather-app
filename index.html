@@ -7,23 +7,34 @@
     <title>Weather App</title>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="./styles/output.css">
+    <link rel="stylesheet" href="/src/styles/output.css">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./favicon/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/src/favicon/favicon.png" type="image/x-icon">
 
     <!-- FontAwesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Chart Js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPBXMEC1P9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-EPBXMEC1P9');
+    </script>
 </head>
 
 <body>
 
     <div class="w-full relative bg-[url('../assets/bg.jpg')] bg-[-400px] mlg:bg-[-125px] bg-cover bg-no-repeat">
 
-        <nav id="navbar" class="nav-bar sticky top-0 transition-all duration-[1s] z-10 text-white flex items-end justify-around py-4">
+        <nav id="navbar"
+            class="nav-bar sticky top-0 transition-all duration-[1s] z-10 text-white flex items-end justify-around py-4">
 
             <div class="nav-left flex items-center gap-6">
 
@@ -91,7 +102,8 @@
                     <i class="fas fa-globe"></i>
                 </div>
 
-                <div id="hamburger-icon" class="circle cursor-pointer h-[30px] w-[30px] bg-black bg-opacity-[0.4] backdrop-blur-[25px] rounded-full text-white flex items-center justify-center">
+                <div id="hamburger-icon"
+                    class="circle cursor-pointer h-[30px] w-[30px] bg-black bg-opacity-[0.4] backdrop-blur-[25px] rounded-full text-white flex items-center justify-center">
                     <i class="font-thin fas fa-bars opacity-[0.9]"></i>
                 </div>
 
@@ -99,7 +111,8 @@
 
         </nav>
 
-        <article class="side-bar translate-x-[100%] transition-all duration-[1s] bg-[#3c4b6f] bg-opacity-[0.95] fixed h-[88vh] right-0 z-10 w-[100%] md:w-[50%] slg:w-[26%]">
+        <article
+            class="side-bar translate-x-[100%] transition-all duration-[1s] bg-[#3c4b6f] bg-opacity-[0.95] fixed h-[88vh] right-0 z-10 w-[100%] md:w-[50%] slg:w-[26%]">
 
             Side Bar
 
@@ -113,14 +126,19 @@
                         class="text-6xl my-4 bg-gradient-to-r from-[#475d90] to-[#9daccf] bg-clip-text text-transparent"
                         style="background-size: 150%; background-position: left 25%;">Stormy</span>
                     <br>
-                    <span class="text-4xl my-4 bg-gradient-to-r from-[#475d90] to-[#9daccf] bg-clip-text text-transparent"
+                    <span
+                        class="text-4xl my-4 bg-gradient-to-r from-[#475d90] to-[#9daccf] bg-clip-text text-transparent"
                         style="background-size: 150%; background-position: left 25%;">with Heavy Rain</span>
 
-                    <p class="text-[#3c4b6f] hidden smd:block w-[225px] smd:w-[300px] h-[225px] overflow-hidden my-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, debitis. Beatae, aspernatur excepturi. Architecto dolorem pariatur animi odio sit. Incidunt asperiores dignissimos consequuntur distinctio voluptatem.</p>
+                    <p class="text-[#3c4b6f] hidden smd:block w-[225px] smd:w-[300px] h-[225px] overflow-hidden my-4">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, debitis. Beatae, aspernatur
+                        excepturi. Architecto dolorem pariatur animi odio sit. Incidunt asperiores dignissimos
+                        consequuntur distinctio voluptatem.</p>
 
                 </div>
 
-                <div class="city-temp-boxes mx-[50px] hidden smd:flex flex-col mlg:flex-row justify-around items-center gap-1">
+                <div
+                    class="city-temp-boxes mx-[50px] hidden smd:flex flex-col mlg:flex-row justify-around items-center gap-1">
                     <!-- <div class="box h-fit w-[152px] mlg:w-[37%]">
                         <div class="temp m-5 text-5xl text-[#3c4b6f]">
                             <span>0&deg;</span>
@@ -166,7 +184,8 @@
                     <div class="graph relative w-fit">
                         <div
                             class="circle bg-white bg-opacity-[0.2] backdrop-blur-[23px] h-[150px] w-[150px] text-white rounded-full overflow-hidden flex items-center justify-center">
-                            <canvas id="myChart" class="relative bottom-[-12px] left-[-10px]" style="width:100%;height:100%;"></canvas>
+                            <canvas id="myChart" class="relative bottom-[-12px] left-[-10px]"
+                                style="width:100%;height:100%;"></canvas>
                         </div>
 
                         <div
@@ -182,7 +201,8 @@
 
                         <div
                             class="temp-bar relative my-3 rounded-full h-[15px] w-[93%] bg-gradient-to-r from-blue-400 to-red-400">
-                            <div id="temp-bar-circle" class="circle w-[20px] h-[20px] rounded-full bg-white absolute top-[-3px] left-[0%]">
+                            <div id="temp-bar-circle"
+                                class="circle w-[20px] h-[20px] rounded-full bg-white absolute top-[-3px] left-[0%]">
                             </div>
                         </div>
 
@@ -218,21 +238,24 @@
             </div>
 
             <div class="right w-[100%] smd:w-[33%] h-fit">
-                
+
                 <div class="hero-temp-box flex items-center mt-[25px] smd:mt-[50px]">
                     <div class="left h-[215px] mx-auto w-[23%] hidden md:flex flex-col justify-between">
-                        <div class="more-info bg-white flex items-center justify-center h-[20px] rounded-full w-[27px] gap-1">
+                        <div
+                            class="more-info bg-white flex items-center justify-center h-[20px] rounded-full w-[27px] gap-1">
                             <div class="dot w-[3.5px] h-[3.5px] bg-[#3c4b6f] rounded-[100%]"></div>
                             <div class="dot w-[3.5px] h-[3.5px] bg-[#3c4b6f] rounded-[100%]"></div>
                             <div class="dot w-[3.5px] h-[3.5px] bg-[#3c4b6f] rounded-[100%]"></div>
                         </div>
 
                         <div class="review w-[80%] mx-auto text-white text-[10px] font-medium">
-                            <div class="stat-info bg-white bg-opacity-[0.35] flex items-center justify-center h-[20px] rounded-full w-[90%] gap-1 my-1">
+                            <div
+                                class="stat-info bg-white bg-opacity-[0.35] flex items-center justify-center h-[20px] rounded-full w-[90%] gap-1 my-1">
                                 <span id="wind-dir">38.90&deg;N</span>
                             </div>
-            
-                            <div class="more-info bg-[#3c4b6f] flex items-center justify-center h-[20px] rounded-full w-[100%] gap-1 my-1">
+
+                            <div
+                                class="more-info bg-[#3c4b6f] flex items-center justify-center h-[20px] rounded-full w-[100%] gap-1 my-1">
                                 <span>Celsius</span>
                             </div>
                         </div>
@@ -265,15 +288,20 @@
                         </div>
 
                         <div class="friend-profiles flex items-center opacity-[0.85]">
-                            <div class="circle bg-purple-700 h-[20px] w-[20px] text-[#3c4b6f] rounded-full flex items-center text-sm justify-center mx-[-4px]">
+                            <div
+                                class="circle bg-purple-700 h-[20px] w-[20px] text-[#3c4b6f] rounded-full flex items-center text-sm justify-center mx-[-4px]">
                             </div>
-                            <div class="circle bg-purple-500 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
+                            <div
+                                class="circle bg-purple-500 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
                             </div>
-                            <div class="circle bg-green-400 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
+                            <div
+                                class="circle bg-green-400 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
                             </div>
-                            <div class="circle bg-cyan-300 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
+                            <div
+                                class="circle bg-cyan-300 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
                             </div>
-                            <div class="circle bg-yellow-200 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
+                            <div
+                                class="circle bg-yellow-200 h-[20px] w-[20px] text-[#3c4b6f] text-sm rounded-full flex items-center justify-center mx-[-4px]">
                             </div>
 
                         </div>
@@ -313,7 +341,7 @@
                             </div>
                         </div>
                     </div> -->
-                
+
                     <div class="cities font-bold text-[#3c4b6f]">
                         <!-- <div class="card border-2 flex justify-around items-center my-[35px] py-3">
                             <span class="city-name border-2">
@@ -349,7 +377,9 @@
                 </defs>
 
                 <!-- Wave path with gradient stroke -->
-                <path fill="transparent" stroke="url(#gradientStroke)" stroke-width="3px" d="M0,128L21.8,144C43.6,160,87,192,131,181.3C174.5,171,218,117,262,112C305.5,107,349,149,393,154.7C436.4,160,480,128,524,149.3C567.3,171,611,245,655,245.3C698.2,245,742,171,785,154.7C829.1,139,873,181,916,176C960,171,1004,117,1047,122.7C1090.9,128,1135,192,1178,229.3C1221.8,267,1265,277,1309,261.3C1352.7,245,1396,203,1418,181.3L1440,160L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path>
+                <path fill="transparent" stroke="url(#gradientStroke)" stroke-width="3px"
+                    d="M0,128L21.8,144C43.6,160,87,192,131,181.3C174.5,171,218,117,262,112C305.5,107,349,149,393,154.7C436.4,160,480,128,524,149.3C567.3,171,611,245,655,245.3C698.2,245,742,171,785,154.7C829.1,139,873,181,916,176C960,171,1004,117,1047,122.7C1090.9,128,1135,192,1178,229.3C1221.8,267,1265,277,1309,261.3C1352.7,245,1396,203,1418,181.3L1440,160L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z">
+                </path>
 
                 <!-- Timestamps along the path -->
                 <text x="115" y="210" fill="#3c4b6f" font-weight="500" font-size="20px">0&deg;</text>
@@ -364,7 +394,7 @@
 
     </div>
 
-    <script type="module" src="./js/script.js"></script>
+    <script type="module" src="/src/js/script.js"></script>
 </body>
 
 </html>
